@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+    <!-- This is the 2nd page 
+    this is the html page where the user inputs the 2 country_id's they wish to compare and gets the results based on those inputs
+    The user is also allowed to use a filter to compare the countries-->
+
+    <style>
+         body{
+            font-family: Arial;
+            text-align: center;
+            background-color:darkblue;
+            color : black;
+        }
+        h1{
+    background-color: aquamarine;
+   /*padding from all up down left right increases distance if you right just padding*/ 
+    padding: 20px;
+    border-width: 5px;
+    border-color:azure;
+    border-style:ridge;
+    position: relative;
+    left: 20px;
+    text-align:center;
+    position: relativel
+
+}
+h3{
+    background-color: aquamarine;
+   /*padding from all up down left right increases distance if you right just padding*/ 
+    padding: 20px;
+    border-width: 5px;
+    border-color:azure;
+    border-style:ridge;
+    position: relative;
+    left: 20px;
+}
+h3{
+    text-align:center;
+    position: relativel
+    
+}
+
+       
+     
+        table.table{
+            text-align:center;
+            margin-left:auto;
+            margin-right:auto;
+        }
+        .larger2{
+            text-align:center;
+            display: inline-block;
+            color: 'aqua';
+            text-decoration: none;
+            padding: 1rem 2rem;
+            border: black;
+            
+            animation-name: btn;
+            opacity:0;
+            margin-top:40px;
+            animation-duration: 2s;
+            animation-delay : 1s;
+            animation-fill-mode: forwards;
+            transition-property: transform;
+            transition-duration:1s;
+
+        }
+
+        .larger2:hover{
+            transform: rotateY(180deg);
+        }
+        @keyframes btn{
+            0%{opacity:0}
+            100%{opacity:1}
+        }
+
+    </style>
+
+    <!-- Below are the js commands that are used to convert even lowercase country_id's to uppercase so that it works in the sql query as expected-->
+    <script>
+
+        var uc1 = document.querySelector("#country_id1");
+        var uc2 = document.querySelector("#country_id2");
+        uc1.addEventListener("onkeyup", changeToUppercase1);
+        uc2.addEventListener("onkeyup", changeToUppercase2);
+        function changeToUppercase1() {
+        
+        var currentvalue = document.querySelector("#country_id1").value;
+        var upperCaseValue = currentvalue.toUpperCase();
+        document.querySelector("#country_id1").value = upperCaseValue;
+        
+        }
+
+        function changeToUppercase2() {
+        
+        var currentvalue2 = document.querySelector("#country_id2").value;
+        var upperCaseValue = currentvalue2.toUpperCase();
+        document.querySelector("#country_id2").value = upperCaseValue;
+        
+        }
+        </script>
+<head>
+<h1>You have successfully registered with us!</h1>
+</head>
+<script src=" https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js "></script>
+
+<hr>
+
+
+<body style="background-image: url('pexels-madison-inouye-1831234.jpg');">
+    <h3>Now all you need to do is fill the two text fields with the respective Country (country_id) that need to be compared <br><br> Eg: GBR, USA etc<br><br> 
+        If you wish to add a filter to compare the two countries, please select any of the options from the list and then click submit </h3>
+    <!-- this is the form where the user inputs the 2 country_id's to be compared-->
+
+    <!-- Below is the form which is a dropdown list which helps the user to filter the table by the methods specified below-->
+
+   
+    <form action = 'view3.php' method="get">
+    <table class="table">
+        <tr>
+        <th><label for="country_id1">Country(country_id1):</label></th>
+               
+        <td><input name="country_id1" type="text" class="larger" id="country_id1" value="GBR" size="12" ></td>
+                
+        </tr>
+        <tr>
+                <th><label for="country_id2">Country(country_id2):</label></th>
+                <td><input name="country_id2" type="text" class="larger" id="country_id2" value="USA" size="12" ></td>
+        </tr>
+        <tr>
+            <h3 class = "NEW"><label for="filter">Filter By:</label></h3>
+            <select name="filter" id="filter" class = "NEW">
+            <option value="None">None</option>
+            <option value="Total Medals">Total Medals</option>
+             <option value="Gold Medals">Gold Medals</option>
+            <option value="Number of Cyclists">Number of Cyclists</option>
+            <option value="Average age of cyclists">Average age of cyclists</option>
+            </select>
+            <br>
+            <br>
+      
+        </tr>
+        <tr> 
+                <td><input type="submit"  name="submit" id="submit" value="Submit" class="larger2" ></td>
+        </tr>
+        </table>
+
+        
+      
+    </form>
+    <div id="serverResponse"></div>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><hr>
+    <h3>COPYRIGHTS RESERVED</h3>
+   
+</body>
+</html>
